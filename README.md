@@ -65,13 +65,7 @@ The template has three modes that correspond to different stages of the program:
 
 ### 3. Write Your Content
 
-The template includes word count guidelines for each section:
-- Abstract: 100-200 words
-- Introduction: 100-350 words
-- Methodology: 200-500 words
-- Results: 200-400 words
-- Discussion: 200-500 words
-- Next Steps: 150-400 words (midterm only)
+See the outline in the mentee guide for suggested sections and word lengths.
 
 ### 4. Add Keywords (Optional but Recommended)
 
@@ -172,32 +166,7 @@ For complete submission instructions, please refer to the official arXiv documen
 - Uses TeX Live 2023+ (arXiv requirement)
 - Pins `array` package to version 2016-10-06 for compatibility
 
-## Troubleshooting
-
-### On Overleaf
-
-**Bibliography not appearing:**
-- Overleaf automatically handles bibliography compilation
-- Make sure you have `references.bib` in your project
-- Try clicking the "Recompile" button if references don't show up
-
-**Compilation errors:**
-- Check the "Logs and output files" panel for detailed error messages
-- Make sure you're using TeX Live 2023 or later (check in Menu → Settings)
-- Verify all figure files are in the `figures/` directory
-
-**Figures not displaying:**
-- Ensure figure paths use forward slashes: `figures/example.pdf`
-- Check that all figures are PDF, PNG, or JPG format
-- Verify figures are actually uploaded to your Overleaf project
-
-### For Local Compilation
-
-See the [Local Setup](#local-setup) section for installation and compilation instructions.
-
 ## Local Setup
-
-This section is for the small percentage of users who prefer to work locally instead of using Overleaf.
 
 ### Prerequisites
 
@@ -261,13 +230,9 @@ pdflatex report.tex && bibtex report && pdflatex report.tex && pdflatex report.t
 - Make sure you're using TeX Live 2023 or later
 - The template pins `array` package to version 2016-10-06 for arXiv compatibility
 
-## Support
+## Documentation
 
 For issues with:
 - **Template**: Check this README and example files
 - **LaTeX**: See [Overleaf documentation](https://www.overleaf.com/learn)
 - **arXiv**: See [arXiv TeX Submissions](https://info.arxiv.org/help/submit_tex.html) and [Submission Guidelines](https://info.arxiv.org/help/submit/index.html)
-
-## License
-
-This template is provided as-is for use by SPAR researchers. Feel free to modify and extend it for your needs.
