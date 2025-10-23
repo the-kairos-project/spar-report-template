@@ -16,13 +16,14 @@
 \title{Mechanistic Interpretability for Detecting Deceptive Behavior in Language Models}
 
 \author{
-  \textbf{Alice Zhang}\\
-  \texttt{alice.zhang@example.edu}\\
-  Example University
-  \and
+
   \textbf{Dr. Sarah Chen}\\
   \texttt{sarah.chen@alignment-lab.org}\\
   Alignment Research Lab
+  \and
+  \textbf{David Solo}\\
+  \texttt{alice.zhang@example.edu}\\
+  Example University
 }
 
 \sparround{Fall 2025}
@@ -110,9 +111,9 @@ We evaluated our interpretability methods on their ability to:
 
 Our linear probes achieved strong performance in distinguishing honest from deceptive reasoning, with accuracy varying by layer (\cref{fig:example}). Middle layers (8-12) showed the highest classification accuracy, peaking at 73\% for layer 10, suggesting these layers encode the most information about deceptive reasoning patterns.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/example-figure.pdf}
+  \includegraphics[width=0.65\textwidth]{figures/example-figure.pdf}
   \caption{Linear probe accuracy for detecting deceptive reasoning across different layers of GPT-2 Medium. Accuracy peaks in middle layers (8-12).}
   \label{fig:example}
 \end{figure}

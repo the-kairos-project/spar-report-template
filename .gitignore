@@ -335,3 +335,6 @@ devenv.local.yaml
 
 # pre-commit
 .pre-commit-config.yaml
+
+# Template-specific: exclude figure generation source
+figures/generate-figure.tex

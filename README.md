@@ -1,84 +1,87 @@
 # SPAR LaTeX Report Template
 
-A professional LaTeX template for SPAR (Singular Projects for Ambitious Research) midterm and final reports, with built-in arXiv compatibility.
+A professional LaTeX template for [SPAR](https://sparai.org) (Supervised Program for Alignment Research) participants. This template supports the full research workflow: from midterm and final reports during the program to converting your work into an arXiv preprint afterward.
 
 ## Quick Start
 
 ### Prerequisites
 
-This template requires:
+Using this template requires:
 - A TeX distribution (TeX Live 2023+ recommended)
 - pdflatex compiler
 - bibtex (for bibliography)
 
-If using the included `devenv` setup:
+We recommend using [Overleaf](https://www.overleaf.com) for an easy online LaTeX environment, or installing [TeX Live](https://www.tug.org/texlive/) for using it locally.
+
+If using the included `devenv` setup (requires [Nix](https://nixos.org/download/) and [devenv](https://devenv.sh/)):
 ```bash
 # Enter the development shell
 devenv shell
 ```
 
-### Compiling Your Report
+This will set up all necessary LaTeX tools and packages.
+
+### Compiling Your Report (for local use)
 
 **Option 1: Using devenv scripts** (recommended)
 ```bash
 # Build any report (automatically handles bibliography)
-build spar-report.tex
+build report.tex
 build example.tex
 
 # Watch mode (recompile on changes)
-watch spar-report.tex
+watch report.tex
 watch example.tex
 
 # Clean auxiliary files
-clean spar-report.tex
+clean report.tex
 clean example.tex
 ```
 
-**Option 2: Using make**
-```bash
-# Build main template (automatically handles bibliography)
-make
-
-# Build example report
-make example
-
-# Watch mode (recompile on changes)
-make watch
-
-# Watch mode for example
-make example-watch
-
-# Clean auxiliary files (both files)
-make clean
-```
-
-**Option 3: Using latexmk directly**
+**Option 2: Using latexmk directly**
 ```bash
 # Full compilation (automatically handles bibliography, reruns, etc.)
-latexmk -pdf spar-report.tex
+latexmk -pdf report.tex
+latexmk -pdf example.tex
 
-# Watch mode
-latexmk -pdf -pvc spar-report.tex
+# Watch mode (recompile on changes)
+latexmk -pdf -pvc report.tex
 
-# Clean
-latexmk -c spar-report.tex
+# Clean auxiliary files
+latexmk -c report.tex
 ```
 
 ## Using the Template
 
 ### 1. Set Report Mode
 
-Edit line 14 in `spar-report.tex` to change the document class option:
+The template has three modes that correspond to different stages of your research journey:
 
 ```latex
 \documentclass[midterm]{sparreport}  % Options: midterm | final | arxiv
 ```
 
-- **midterm**: Title prefix "Midterm Report:", SPAR branding in footer
-- **final**: Title prefix "Final Report:", SPAR branding in footer
-- **arxiv**: No prefix, removes all SPAR-specific decoration for paper submission
+**Choose the appropriate mode:**
 
-All sections are always visible - the mode only changes the title prefix and branding.
+- **`midterm`** - For your mid-program report
+  - Adds "Midterm Report:" prefix to title
+  - Includes SPAR branding and round information
+  - Designed for internal review by mentors and program coordinators
+  - Standard 1-inch margins for easy reading and annotations
+
+- **`final`** - For your end-of-program report
+  - Adds "Final Report:" prefix to title
+  - Includes SPAR branding and round information
+  - Designed for internal review and program completion
+  - Same comfortable formatting as midterm mode
+
+- **`arxiv`** - For publishing your work as a preprint
+  - Removes title prefix and all SPAR-specific branding
+  - Optimized layout for arXiv (compact geometry, tighter spacing)
+  - Hides round information and program-specific elements
+  - Use this when converting your final report into a paper for public release
+
+**Note:** All sections (Introduction, Methodology, Results, Discussion) are visible in all modes. The mode only affects formatting, branding, and layout optimization.
 
 ### 2. Fill in Metadata
 
@@ -86,19 +89,22 @@ All sections are always visible - the mode only changes the title prefix and bra
 % Title (prefix added automatically based on mode)
 \title{Your Report Title Here}
 
-% Authors (displayed horizontally, wrapping to new lines as needed)
+% Authors
+% For SPAR reports: List yourself and your mentor(s)
+% For arXiv: List all co-authors
+% Authors are displayed horizontally, wrapping to new lines as needed
 \author{
-  \textbf{Student Name}\\
-  \texttt{student@example.com}\\
-  Your Institution  % Optional: add affiliation (recommended for arXiv mode)
-  % Add more authors (including mentors) with \and:
-  % \and
-  % \textbf{Mentor Name}\\
-  % \texttt{mentor@example.com}\\
-  % Mentor Institution
+  \textbf{Your Name}\\
+  \texttt{your.email@example.com}\\
+  Your Institution  % Optional but recommended for arXiv mode
+  \and
+  \textbf{Mentor Name}\\
+  \texttt{mentor@example.org}\\
+  Mentor Institution
+  % Add more authors with \and as needed
 }
 
-% SPAR round (hidden in arxiv mode)
+% SPAR round (automatically hidden in arxiv mode)
 \sparround{Fall 2025}
 ```
 
@@ -170,13 +176,13 @@ When submitting to arXiv, follow these steps:
 
 ```bash
 # Compile to generate the .bbl file
-pdflatex spar-report.tex
-bibtex spar-report
-pdflatex spar-report.tex
-pdflatex spar-report.tex
+pdflatex report.tex
+bibtex report
+pdflatex report.tex
+pdflatex report.tex
 
-# Verify spar-report.bbl was created
-ls spar-report.bbl
+# Verify report.bbl was created
+ls report.bbl
 ```
 
 ### What to Submit
@@ -185,8 +191,8 @@ Upload these files to arXiv:
 
 1. **Required:**
    - `sparreport.cls` (the template class file)
-   - `spar-report.tex` (your main LaTeX file)
-   - `spar-report.bbl` (generated bibliography file)
+   - `report.tex` (your main LaTeX file)
+   - `report.bbl` (generated bibliography file)
    - All figure files from `figures/` directory
 
 2. **Do NOT include:**
@@ -221,25 +227,27 @@ The template includes publication-quality typography features:
 
 ### Mode-Specific Formatting
 
-Different formatting is automatically applied based on your chosen mode:
+The template automatically adapts its formatting based on your chosen mode to match the intended audience and use case:
 
-**All modes:**
-- Professional typography settings
-- Improved abstract styling (centered, bold heading)
-- Better float and caption spacing
-- Keywords support
+**Program Reports (midterm/final modes):**
+- Comfortable 1-inch margins for easy reading and mentor annotations
+- Traditional paragraph indentation for a formal report style
+- Standard section spacing for readability
+- SPAR branding footer with round information
+- Optimized for internal review and feedback
 
-**arXiv mode only:**
-- Compact page geometry (9in × 6.5in text area) to maximize content
-- No paragraph indentation with spacing between paragraphs
-- Tighter section spacing
-- No SPAR branding or footer
+**arXiv Preprints (arxiv mode):**
+- Compact page geometry (9in × 6.5in text area) following arXiv conventions
+- No paragraph indentation with space between paragraphs for better screen reading
+- Tighter section spacing to maximize content density
+- All SPAR-specific branding removed for public release
+- Optimized for academic paper archives and wider distribution
 
-**Midterm/Final modes:**
-- Standard 1in margins for comfortable reading and annotations
-- Traditional paragraph indentation
-- Standard section spacing
-- SPAR branding footer
+**All modes include:**
+- Professional typography (widow/orphan prevention, optimized spacing)
+- Improved abstract styling with centered, bold heading
+- Smart caption spacing (different for tables vs. figures)
+- Keywords support for discoverability
 
 ### Conditional Sections
 
@@ -315,10 +323,13 @@ The template uses standard `article` class. You can modify:
 ### Bibliography not appearing
 ```bash
 # Make sure to run the full compilation sequence
-pdflatex spar-report.tex
-bibtex spar-report
-pdflatex spar-report.tex
-pdflatex spar-report.tex
+pdflatex report.tex
+bibtex report
+pdflatex report.tex
+pdflatex report.tex
+
+# Or just use latexmk (handles everything automatically)
+latexmk -pdf report.tex
 ```
 
 ### Figures not found
