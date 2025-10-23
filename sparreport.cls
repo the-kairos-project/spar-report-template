@@ -102,8 +102,11 @@
     footskip=30pt
   }
 \else
-  % SPAR modes: use comfortable 1in margins
-  \geometry{margin=1in}
+  % SPAR modes: use comfortable 1in margins with extra footer space
+  \geometry{
+    margin=1in,
+    footskip=0.5in
+  }
 \fi
 
 % ============================================================================
@@ -240,7 +243,7 @@
     \ifspar@arxiv\else
       \vspace{0.5em}
 
-      {\small Supervised Program for Alignment Research --- \spar@round}
+      {\small \href{https://sparai.org}{\color{black}\underline{Supervised Program for Alignment Research}} --- \spar@round}
     \fi
   \end{center}
 }

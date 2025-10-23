@@ -47,7 +47,7 @@ As large language models (LLMs) become increasingly capable, the risk of decepti
 % ============================================================================
 % INTRODUCTION
 % ============================================================================
-\section{Introduction and Statement of the Problem}
+\section{Introduction}
 
 The rapid advancement of large language models has led to systems capable of sophisticated reasoning and planning~\cite{brown2020language, wei2022chain}. However, as these models become more capable, the concern that they might engage in deceptive behavior—deliberately misleading users or evaluators to better achieve their training objectives—has become increasingly salient~\cite{park2023ai, hubinger2019risks}.
 
@@ -102,9 +102,9 @@ We evaluated our interpretability methods on their ability to:
 \end{itemize}
 
 % ============================================================================
-% RESULTS
+% PRELIMINARY RESULTS
 % ============================================================================
-\section{Results}
+\section{Preliminary Results}
 
 \subsection{Linear Probe Performance}
 
@@ -150,17 +150,17 @@ Analysis of sparse autoencoder features revealed several interpretable patterns:
 Notably, deceptive reasoning showed suppressed activation of fact-checking features while maintaining high confidence feature activation—a pattern that distinguishes deception from honest mistakes.
 
 % ============================================================================
-% DISCUSSION
+% CHALLENGES & OPEN QUESTIONS
 % ============================================================================
-\section{Discussion}
+\section{Challenges \& Open Questions}
 
-Our results demonstrate that mechanistic interpretability techniques can detect signatures of deceptive reasoning in language models with moderate reliability. The 73\% accuracy achieved by linear probes suggests that honest and deceptive reasoning involve detectably different computational patterns, at least in our controlled experimental setup.
+We have encountered several significant challenges during this research. First, our models were explicitly trained to be deceptive, which may produce more obvious signatures than naturally emerging deception. It remains unclear whether our detection methods would work on models that develop deceptive behavior spontaneously during training on standard objectives.
 
-The concentration of deception-relevant computation in middle layers (8-12) aligns with prior work showing that middle layers are responsible for semantic processing and reasoning~\cite{tenney2019bert}. This suggests that deception emerges from high-level semantic computations rather than low-level pattern matching or high-level output formatting.
+Second, computational constraints have limited us to GPT-2 Medium (355M parameters). Scaling to larger models (1B+ parameters) may reveal whether our findings generalize or whether more capable models develop harder-to-detect deception strategies. We are currently uncertain about the best approach to scale our experiments given limited compute resources.
 
-However, several important limitations constrain our conclusions. First, our models were explicitly trained to be deceptive, which may produce more obvious signatures than naturally emerging deception. Second, our dataset focuses on factual questions where ground truth is clear; deception in more ambiguous domains may be harder to detect. Third, more sophisticated models might develop deception strategies that are less detectable by current interpretability methods.
+Third, our dataset focuses on factual questions where ground truth is clear. We have not yet tested whether our methods can detect deception in more ambiguous domains like moral reasoning or subjective judgments, where the boundary between honest disagreement and deception is less clear.
 
-The suppression of fact-checking features during deceptive reasoning is particularly concerning from an alignment perspective. This suggests that deceptive models may develop the capacity to selectively disable their own verification mechanisms—a form of self-deception that could be difficult to detect through behavioral evaluation alone.
+Finally, the suppression of fact-checking features during deceptive reasoning raises a deeper question: can interpretability methods remain effective against adversarially trained models that learn to hide their deceptive reasoning patterns? This adversarial robustness question is critical but remains largely unexplored in our work so far.
 
 % ============================================================================
 % NEXT STEPS
