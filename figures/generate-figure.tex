@@ -1,11 +1,9 @@
 \documentclass{article}
 \usepackage{tikz}
-\usepackage[margin=0.5in]{geometry}
 \pagestyle{empty}
 
 \begin{document}
-\begin{center}
-\begin{tikzpicture}[scale=1.2]
+\begin{tikzpicture}[scale=1.5]
   % Draw axes
   \draw[->] (0,0) -- (6,0) node[right] {Iteration};
   \draw[->] (0,0) -- (0,4) node[above] {Loss};
@@ -39,5 +37,4 @@
     \node[left] at (-0.1,\y) {0.\y};
   }
 \end{tikzpicture}
-\end{center}
 \end{document}

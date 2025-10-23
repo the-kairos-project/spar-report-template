@@ -21,25 +21,34 @@ devenv shell
 
 **Option 1: Using devenv scripts** (recommended)
 ```bash
-# Build (automatically handles bibliography)
+# Build any report (automatically handles bibliography)
 build spar-report.tex
+build example.tex
 
 # Watch mode (recompile on changes)
 watch spar-report.tex
+watch example.tex
 
 # Clean auxiliary files
 clean spar-report.tex
+clean example.tex
 ```
 
 **Option 2: Using make**
 ```bash
-# Build (automatically handles bibliography)
+# Build main template (automatically handles bibliography)
 make
+
+# Build example report
+make example
 
 # Watch mode (recompile on changes)
 make watch
 
-# Clean auxiliary files
+# Watch mode for example
+make example-watch
+
+# Clean auxiliary files (both files)
 make clean
 ```
 

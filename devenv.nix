@@ -46,7 +46,11 @@
     echo "  • watch <file>  → Watch mode (recompile on changes)"
     echo "  • clean <file>  → Clean auxiliary files"
     echo ""
-    echo "Or use: make, make watch, make clean"
+    echo "Examples:"
+    echo "  build spar-report.tex"
+    echo "  build example.tex"
+    echo ""
+    echo "Or use: make, make example, make watch, make example-watch, make clean"
     echo ""
     echo "TeX Live version: $(pdflatex --version | head -n1)"
   '';

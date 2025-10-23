@@ -13,9 +13,21 @@
 \newif\ifspar@final
 \newif\ifspar@arxiv
 
-\DeclareOption{midterm}{\spar@midtermtrue}
-\DeclareOption{final}{\spar@finaltrue}
-\DeclareOption{arxiv}{\spar@arxivtrue}
+\DeclareOption{midterm}{%
+  \spar@midtermtrue
+  \spar@finalfalse
+  \spar@arxivfalse
+}
+\DeclareOption{final}{%
+  \spar@midtermfalse
+  \spar@finaltrue
+  \spar@arxivfalse
+}
+\DeclareOption{arxiv}{%
+  \spar@midtermfalse
+  \spar@finalfalse
+  \spar@arxivtrue
+}
 
 % Pass all other options to article class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -213,7 +225,7 @@
 \renewcommand{\maketitle}{%
   \begin{center}
     {\LARGE \textbf{\spar@reportprefix\@title}}
-    \vspace{1.5em}
+    \vspace{2em}
 
     % Authors in horizontal layout with wrapping support
     % Each author is in a top-aligned centered tabular
@@ -228,8 +240,7 @@
     \ifspar@arxiv\else
       \vspace{0.5em}
 
-      {\small Supervised Program for Alignment Research}\\[0.2em]
-      {\small \spar@round}
+      {\small Supervised Program for Alignment Research --- \spar@round}
     \fi
   \end{center}
 }
