@@ -255,9 +255,10 @@
   % SPAR branding in footer for midterm/final modes
   \pagestyle{fancy}
   \fancyhf{} % Clear all headers/footers
-  \fancyfoot[C]{\small SPAR \spar@round}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{\small SPAR \spar@round}
   \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
 \fi
 
 % ============================================================================
